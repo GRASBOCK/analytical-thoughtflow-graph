@@ -1,0 +1,24 @@
+{
+  "name": "research-chart",
+  "type": "module",
+  "version": "0.0.1",
+  "scripts": {
+    "dev": "astro dev",
+    "start": "astro dev",
+    "build": "astro check && astro build",
+    "preview": "astro preview",
+    "astro": "astro"
+  },
+  "dependencies": {
+    "@astrojs/check": "^0.6.0",
+    "@astrojs/svelte": "^5.4.0",
+    "astro": "^4.8.2",
+    "svelte": "^4.2.16",
+    "typescript": "^5.4.5",
+    "vis-data": "^7.1.9",
+    "vis-network": "^9.1.9"
+  },
+  "devDependencies": {
+    "@types/vis": "^4.21.27"
+  }
+}
