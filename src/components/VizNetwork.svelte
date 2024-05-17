@@ -3,6 +3,9 @@
     import * as vis from 'vis-network'
     import {DataSet} from 'vis-data'
     var network = null;
+    import {Graph} from '../graph'
+
+    export let graph = new Graph();
 
     function destroy() {
         if (network !== null) {
@@ -14,21 +17,14 @@
     function draw() {
         destroy();
         // create an array with nodes
-        var nodes = new DataSet([
-        { id: 1, label: "Node 1" },
-        { id: 2, label: "Node 2" },
-        { id: 3, label: "Node 3" },
-        { id: 4, label: "Node 4" },
-        { id: 5, label: "Node 5" },
-        ]);
+        var nodes = new DataSet(graph.nodes.map((node, index) => {
+            return { id: index, label: node.label }; 
+        }));
 
         // create an array with edges
-        var edges = new DataSet([
-        { from: 1, to: 3 },
-        { from: 1, to: 2 },
-        { from: 2, to: 4 },
-        { from: 2, to: 5 },
-        ]);
+        var edges = new DataSet(graph.edges.map(edge => {
+            return { from: edge.from, to: edge.to }; 
+        }));
 
         var data = {
             nodes: nodes,

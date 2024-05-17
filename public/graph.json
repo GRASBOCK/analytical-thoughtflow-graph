@@ -1,0 +1,15 @@
+{
+    "nodes": [
+        { "label": "Node 1", "text": "test", "type": ""},
+        { "label": "Node 2", "text": "test", "type": ""},
+        { "label": "Node 3", "text": "test", "type": ""},
+        { "label": "Node 4", "text": "test", "type": ""},
+        { "label": "Node 5", "text": "test", "type": ""}
+    ],
+    "edges": [
+        { "from": 0, "to": 2, "verb": "" },
+        { "from": 0, "to": 1, "verb": "" },
+        { "from": 1, "to": 3, "verb": "" },
+        { "from": 1, "to": 4, "verb": "" }
+    ]
+}
