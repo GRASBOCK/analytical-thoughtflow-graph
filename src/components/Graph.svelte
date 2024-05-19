@@ -16,14 +16,13 @@
     .flex-container {
       display: flex;
       flex-wrap: nowrap;
-      width:100%;
+      width:100vw;
       max-height: 100vh;
       background-color: rgb(85, 85, 85);
     }
     
     .flex-container > div {
       background-color: #ffffff;
-      width: 100px;
     }
 
     #network_panel{
@@ -35,5 +34,6 @@
         font-size: 30px;
         padding: 50px;
         width:40%;
+        word-wrap: break-word;
     }
 </style>
