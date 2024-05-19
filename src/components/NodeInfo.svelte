@@ -4,5 +4,11 @@
 </script>
 
 <p>
-    {node?.text}
+    {#if node === null}
+        No node selected
+    {:else}
+        <h1>{node.label}</h1>
+        <p>{node.text}</p>
+    {/if}
+    
 </p>
