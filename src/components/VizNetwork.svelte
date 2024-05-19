@@ -49,6 +49,9 @@
                     roundness: 0.4,
                 },
             },
+            nodes: {
+                shape: "box",
+            },
             layout: {
                 hierarchical: {
                     direction: directionInput,
