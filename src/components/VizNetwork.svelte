@@ -1,11 +1,12 @@
-<script>
+<script lang="ts">
     import { onMount } from 'svelte';
     import * as vis from 'vis-network'
     import {DataSet} from 'vis-data'
-    var network = null;
-    import {Graph} from '../graph'
+    var network: vis.Network | null = null;
+    import {Graph, Node} from '../graph'
 
     export let graph = new Graph();
+    export let on_select = function (node: Node){console.log("Selection: " + node)}
 
     function destroy() {
         if (network !== null) {
@@ -22,24 +23,28 @@
         }));
 
         // create an array with edges
-        var edges = new DataSet(graph.edges.map(edge => {
-            return { from: edge.from, to: edge.to }; 
+        var edges: vis.DataInterfaceEdges = new DataSet(graph.edges.map((edge, index) => {
+            return { id:index, from: edge.from, to: edge.to }; 
         }));
 
-        var data = {
+        var data: vis.Data = {
             nodes: nodes,
             edges: edges,
         };
 
         // create a network
         var container = document.getElementById("mynetwork");
+        if(container == null){
+            return
+        }
         var directionInput = "UD";
-        var options = {
+        var options: vis.Options = {
             interaction: {
                 dragNodes: false
             },
             edges: {
                 smooth: {
+                    enabled: true,
                     type: "cubicBezier",
                     roundness: 0.4,
                 },
@@ -54,7 +59,11 @@
 
         // add event listeners
         network.on("select", function (params) {
-            console.log("Selection: " + params.nodes)
+            if(params.nodes.length > 0){
+                let node_index = params.nodes[0]
+                let node = graph.nodes[node_index]
+                on_select(node)
+            }
         });
     }
 

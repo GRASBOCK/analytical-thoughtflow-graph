@@ -1,14 +1,13 @@
 ---
 import Layout from '../layouts/Layout.astro';
-import VizNetwork from '../components/VizNetwork.svelte';
 import { Graph } from '../graph';
+import GraphComponent from '../components/Graph.svelte';
 
 import graph_file from '../../public/graph.json'
 
 let g : Graph = Object.assign( new Graph(), graph_file as Object );
-console.log(g)
 ---
 
 <Layout title="Research Graph">
-	<VizNetwork graph={g} client:load></VizNetwork>
+	<GraphComponent graph={g} client:load/>
 </Layout>
